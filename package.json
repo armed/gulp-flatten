@@ -30,5 +30,8 @@
   "devDependencies": {
     "should": "~2.1.1",
     "mocha": "~1.17.0"
+  },
+  "engines": {
+    "node": ">=0.10"
   }
 }
