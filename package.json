@@ -1,0 +1,34 @@
+{
+  "name": "gulp-flatten",
+  "version": "0.0.1",
+  "description": "remove or replace relative path for files",
+  "main": "index.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha -R spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/armed/gulp-flatten.git"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "flatten",
+    "relative",
+    "path"
+  ],
+  "author": "Artem Medeusheyev <artem.medeusheyev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/armed/gulp-flatten/issues"
+  },
+  "homepage": "https://github.com/armed/gulp-flatten",
+  "dependencies": {
+    "through": "~2.3.4",
+    "gulp-util": "~2.2.9"
+  },
+  "devDependencies": {
+    "should": "~2.1.1",
+    "mocha": "~1.17.0"
+  }
+}
