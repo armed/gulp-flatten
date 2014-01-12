@@ -1,4 +1,4 @@
-# [gulp](http://gulpjs.com)-flatten [![Build Status](https://travis-ci.org/armed/gulp-flatten.png?branch=master)](https://travis-ci.org/armed/gulp-flatten)
+# [gulp](http://gulpjs.com)-flatten [![NPM version](https://badge.fury.io/js/gulp-flatten.png)](http://badge.fury.io/js/gulp-flatten) [![Build Status](https://travis-ci.org/armed/gulp-flatten.png?branch=master)](https://travis-ci.org/armed/gulp-flatten)
 
 >Remove or replace relative path for files (gulp v3).
 
