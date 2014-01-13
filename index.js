@@ -1,17 +1,18 @@
 var path = require('path');
-var through = require('through');
+var through2 = require('through2');
 var PluginError = require('gulp-util').PluginError;
 
 module.exports = function(opts) {
   opts = opts || {};
   opts.newPath = opts.newPath || '';
 
-  return through(function(file) {
+  return through2.obj(function(file, enc, next) {
     try {
       file.path = path.join(file.base, opts.newPath, path.basename(file.path));
-      this.queue(file);
+      this.push(file);
     } catch (e) {
       this.emit('error', new PluginError('gulp-flatten', e));
     }
+    next();
   });
 };
