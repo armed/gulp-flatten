@@ -1,6 +1,6 @@
 {
   "name": "gulp-flatten",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "remove or replace relative path for files",
   "main": "index.js",
   "scripts": {
