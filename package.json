@@ -29,7 +29,8 @@
   },
   "devDependencies": {
     "should": "~2.1.1",
-    "mocha": "~1.17.0"
+    "mocha": "~1.17.0",
+    "pre-commit": "0.0.4"
   },
   "engines": {
     "node": ">=0.10"
