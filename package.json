@@ -1,6 +1,6 @@
 {
   "name": "gulp-flatten",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "remove or replace relative path for files",
   "main": "index.js",
   "scripts": {
@@ -25,6 +25,7 @@
   "homepage": "https://github.com/armed/gulp-flatten",
   "dependencies": {
     "through2": "^0.6.1",
+    "gulp": "^3.8.8",
     "gulp-util": "^3.0.1"
   },
   "devDependencies": {
