@@ -1,6 +1,8 @@
 var should = require('should');
 var flatten = require('../');
 var File = require('gulp-util').File;
+var gulp = require('gulp');
+var join = require('path').join;
 
 var file = new File({
   cwd: '/some/project/',
@@ -48,6 +50,27 @@ describe('gulp-flatten', function () {
         done();
       });
       stream.write(file);
-    })
+    });
+
+    it('should ignore directories', function (done) {
+      var stream = flatten();
+
+      stream.on('error', done);
+      stream.on('data', function(newFile) {
+        should.exist(newFile);
+        should.exist(newFile.path);
+        should.exist(newFile.relative);
+
+        newFile.relative.should.equal('test.css');
+        done();
+      });
+
+      gulp.task('dottask', function () {
+        gulp.src(join(__dirname, '/test_dir/**/*.css'))
+          .pipe(stream);
+      });
+
+      gulp.start('dottask');
+    });
   });
 });
