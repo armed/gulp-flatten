@@ -86,8 +86,15 @@ Relative path for file.
 
 Type: `Number`
 
-If passed in, it will include the number of top-level parents in the output. Passing in `{ includeParents: 1 }` to the
-code above would create this structure:
+If passed in, it will include the number of top-level parents in the output. Using this code:
+
+```
+gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.css'])
+  .pipe(flatten({ includeParents: 1} ))
+  .pipe(gulp.dest('build/'));
+```
+
+will create this structure:
 
 ```
 ├── angular
