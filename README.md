@@ -82,6 +82,35 @@ Default: `''`
 
 Relative path for file.
 
+### options.includeParents
+
+Type: `Number`
+
+If passed in, it will include the number of top-level parents in the output. Using this code:
+
+```
+gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.css'])
+  .pipe(flatten({ includeParents: 1} ))
+  .pipe(gulp.dest('build/'));
+```
+
+will create this structure:
+
+```
+├── angular
+│   ├── angular-csp.css
+│   └── angular.min.js
+├── angular-route
+│   └── angular-route.min.js
+├── angular-sanitize
+│   └── angular-sanitize.min.js
+└── bootstrap
+    ├── bootstrap-theme.css
+    ├── bootstrap-theme.min.css
+    ├── bootstrap.css
+    ├── bootstrap.min.css
+    └── bootstrap.min.js
+```
 
 ## License
 
