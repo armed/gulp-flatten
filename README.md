@@ -88,7 +88,7 @@ Type: `Number`
 
 If passed in, it will include the number of top-level parents in the output. Using this code:
 
-```
+```js
 gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.css'])
   .pipe(flatten({ includeParents: 1} ))
   .pipe(gulp.dest('build/'));
