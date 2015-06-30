@@ -82,7 +82,7 @@ Default: `''`
 
 Relative path for file.
 
-### options.includeParents
+#### options.includeParents
 
 Type: `Number`
 
