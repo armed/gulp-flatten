@@ -82,6 +82,28 @@ Default: `''`
 
 Relative path for file.
 
+### options.includeParents
+
+Type: `Number`
+
+If passed in, it will include the number of top-level parents in the output. Passing in `{ includeParents: 1 }` to the
+code above would create this structure:
+
+```
+├── angular
+│   ├── angular-csp.css
+│   └── angular.min.js
+├── angular-route
+│   └── angular-route.min.js
+├── angular-sanitize
+│   └── angular-sanitize.min.js
+└── bootstrap
+    ├── bootstrap-theme.css
+    ├── bootstrap-theme.min.css
+    ├── bootstrap.css
+    ├── bootstrap.min.css
+    └── bootstrap.min.js
+```
 
 ## License
 

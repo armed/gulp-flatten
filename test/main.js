@@ -3,15 +3,19 @@ var flatten = require('../');
 var File = require('gulp-util').File;
 var gulp = require('gulp');
 var join = require('path').join;
-
-var file = new File({
-  cwd: '/some/project/',
-  base: '/some/project/src/',
-  path: '/some/project/src/assets/css/app.css',
-  contents: new Buffer('html { background-color: #777; }')
-});
+var fileInstance;
 
 describe('gulp-flatten', function () {
+  
+  beforeEach(function () {
+    fileInstance = new File({
+      cwd: '/some/project/',
+      base: '/some/project/src/',
+      path: '/some/project/src/assets/css/app.css',
+      contents: new Buffer('html { background-color: #777; }')
+    });
+  });
+  
   describe('flatten()', function () {
     it('should strip relative path without options', function (done) {
       var stream = flatten();
@@ -24,7 +28,7 @@ describe('gulp-flatten', function () {
         newFile.relative.should.equal('app.css');
         done();
       });
-      stream.write(file);
+      stream.write(fileInstance);
     });
 
     it('should replace relative path with option path', function (done) {
@@ -38,7 +42,7 @@ describe('gulp-flatten', function () {
         newFile.relative.should.equal('new/path/app.css');
         done();
       });
-      stream.write(file);
+      stream.write(fileInstance);
     });
 
     it('should emit arg error with nonstring option', function (done) {
@@ -49,7 +53,7 @@ describe('gulp-flatten', function () {
         err.message.should.equal('Arguments to path.join must be strings');
         done();
       });
-      stream.write(file);
+      stream.write(fileInstance);
     });
 
     it('should ignore directories', function (done) {
@@ -71,6 +75,38 @@ describe('gulp-flatten', function () {
       });
 
       gulp.start('dottask');
+    });
+
+    it('should strip relative path at the specified depth if depth option is passed', function (done) {
+      var stream = flatten({includeParents: 2});
+      stream.on('error', done);
+      stream.on('data', function(newFile) {
+        should.exist(newFile);
+        should.exist(newFile.path);
+        should.exist(newFile.relative);
+
+        newFile.relative.should.equal('one/two/app.css');
+        done();
+      });
+      
+      fileInstance.path = '/some/project/src/one/two/three/four/app.css';
+      stream.write(fileInstance);
+    });
+
+    it('should make no changes if the depth option is greater than the tree depth', function (done) {
+      var stream = flatten({includeParents: 8});
+      stream.on('error', done);
+      stream.on('data', function(newFile) {
+        should.exist(newFile);
+        should.exist(newFile.path);
+        should.exist(newFile.relative);
+
+        newFile.relative.should.equal('one/two/three/four/app.css');
+        done();
+      });
+
+      fileInstance.path = '/some/project/src/one/two/three/four/app.css';
+      stream.write(fileInstance);
     });
   });
 });
