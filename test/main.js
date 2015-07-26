@@ -2,7 +2,7 @@ var should = require('should');
 var flatten = require('../');
 var File = require('gulp-util').File;
 var gulp = require('gulp');
-var join = require('path').join;
+var path = require('path');
 var fileInstance;
 
 describe('gulp-flatten', function () {
@@ -39,7 +39,7 @@ describe('gulp-flatten', function () {
         should.exist(newFile.path);
         should.exist(newFile.relative);
 
-        newFile.relative.should.equal('new/path/app.css');
+        newFile.relative.should.equal('new/path/app.css'.split('/').join(path.sep));
         done();
       });
       stream.write(fileInstance);
@@ -70,7 +70,7 @@ describe('gulp-flatten', function () {
       });
 
       gulp.task('dottask', function () {
-        gulp.src(join(__dirname, '/test_dir/**/*.css'))
+        gulp.src(path.join(__dirname, '/test_dir/**/*.css'))
           .pipe(stream);
       });
 
@@ -85,7 +85,7 @@ describe('gulp-flatten', function () {
         should.exist(newFile.path);
         should.exist(newFile.relative);
 
-        newFile.relative.should.equal('one/two/app.css');
+        newFile.relative.should.equal('one/two/app.css'.split('/').join(path.sep));
         done();
       });
       
@@ -101,7 +101,7 @@ describe('gulp-flatten', function () {
         should.exist(newFile.path);
         should.exist(newFile.relative);
 
-        newFile.relative.should.equal('one/two/three/four/app.css');
+        newFile.relative.should.equal('one/two/three/four/app.css'.split('/').join(path.sep));
         done();
       });
 
