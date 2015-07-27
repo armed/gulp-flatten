@@ -6,7 +6,7 @@ var path = require('path');
 var fileInstance;
 
 describe('gulp-flatten', function () {
-  
+
   beforeEach(function () {
     fileInstance = new File({
       cwd: '/some/project/',
@@ -15,7 +15,7 @@ describe('gulp-flatten', function () {
       contents: new Buffer('html { background-color: #777; }')
     });
   });
-  
+
   describe('flatten()', function () {
     it('should strip relative path without options', function (done) {
       var stream = flatten();
@@ -50,7 +50,8 @@ describe('gulp-flatten', function () {
       stream.on('error', function (err) {
         should.exist(err);
         should.exist(err.message);
-        err.message.should.equal('Arguments to path.join must be strings');
+        should.ok(err.message === 'Path must be a string. Received undefined'
+          || err.message === 'Arguments to path.join must be strings')
         done();
       });
       stream.write(fileInstance);
@@ -88,7 +89,7 @@ describe('gulp-flatten', function () {
         newFile.relative.should.equal('one/two/app.css'.split('/').join(path.sep));
         done();
       });
-      
+
       fileInstance.path = '/some/project/src/one/two/three/four/app.css';
       stream.write(fileInstance);
     });
