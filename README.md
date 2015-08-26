@@ -84,32 +84,63 @@ Relative path for file.
 
 #### options.includeParents
 
-Type: `Number`
+Type: `Number` or `Array` of two numbers
 
-If passed in, it will include the number of top-level parents in the output. Using this code:
+If passed in as positive number, it will include the number of top-level parents in the output. Using this code:
 
 ```js
-gulp.src(['bower_components/**/*.min.js', 'bower_components/**/*.css'])
+gulp.src(['bower_components/**/*.css'])
   .pipe(flatten({ includeParents: 1} ))
   .pipe(gulp.dest('build/'));
 ```
 
-will create this structure:
+will create this structure (from sample directory tree above):
 
 ```
-├── angular
-│   ├── angular-csp.css
-│   └── angular.min.js
-├── angular-route
-│   └── angular-route.min.js
-├── angular-sanitize
-│   └── angular-sanitize.min.js
 └── bootstrap
     ├── bootstrap-theme.css
     ├── bootstrap-theme.min.css
     ├── bootstrap.css
     ├── bootstrap.min.css
     └── bootstrap.min.js
+```
+
+If passed in as negative number, it will include the number of bottom-level parents in the output. Using this code:
+
+```js
+gulp.src(['bower_components/**/*.css'])
+  .pipe(flatten({ includeParents: -1} )) //or indludeParents: [0, 1]
+  .pipe(gulp.dest('build/'));
+```
+
+will create this structure:
+
+```
+└── css
+    ├── bootstrap-theme.css
+    ├── bootstrap-theme.min.css
+    ├── bootstrap.css
+    ├── bootstrap.min.css
+    └── bootstrap.min.js
+```
+
+If passes as array of two numbers, both parents from top and bottom will be kept in resulting path of a file.
+
+```js
+gulp.src(['bower_components/**/*.css'])
+  .pipe(flatten({ includeParents: [1, 1]} ))
+  .pipe(gulp.dest('build/'));
+```
+
+will create this structure:
+
+```
+└── bootstrap
+    └── css
+        ├── bootstrap-theme.css
+        ├── bootstrap-theme.min.css
+        ├── bootstrap.css
+        └── bootstrap.min.css
 ```
 
 ## License
