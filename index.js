@@ -6,6 +6,7 @@ var PluginError = require('gulp-util').PluginError;
 module.exports = function(opts) {
   opts = opts || {};
   opts.newPath = opts.newPath || '';
+  opts.excludedFolders = opts.excludedFolders || [];
 
   return through2.obj(function(file, enc, next) {
     if (!file.isDirectory()) {
