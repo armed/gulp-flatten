@@ -82,6 +82,19 @@ Default: `''`
 
 Relative path for file.
 
+#### options.excludedFolders
+
+Type: `Array`  
+Default: `[]`
+
+Excluded folders for file.
+
+```js
+gulp.src(['bower_components/**/*.css'])
+  .pipe(flatten({ excludedFolders: ['public', 'Resources']} ))
+  .pipe(gulp.dest('build/'));
+```
+
 #### options.includeParents
 
 Type: `Number` or `Array` of two numbers
