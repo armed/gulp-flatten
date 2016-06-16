@@ -159,7 +159,7 @@ This as an example would flatten `top1/top2/bottom2/bottom1/file.txt` to `top2/f
 
 `[1, -1]` would flatten `top1/top2/bottom2/bottom1/file.txt` to `top2/bottom2/file.txt`.
 
-Please refer to the [Array.slice docs](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) for a detailed description.
+Please refer to the [Array.slice documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) for a detailed description.
 
 **!** If you're using both `options.includeParents` combined with `options.subPath`
 please note that `options.includeParents` is applied first.
