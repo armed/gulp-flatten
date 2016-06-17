@@ -143,6 +143,27 @@ will create this structure:
         └── bootstrap.min.css
 ```
 
+#### options.subPath
+
+Type: Number or Array of two Numbers [begin, end]
+
+This options applies `Array.slice` to the array of path elements and allows you
+to receive a subsequences of the path.
+
+```js
+gulp.src(['bower_components/**/*.css'])
+  .pipe(flatten({ subPath: [1, 1]} ))
+  .pipe(gulp.dest('build/'));
+```
+This as an example would flatten `top1/top2/bottom2/bottom1/file.txt` to `top2/file.txt`.
+
+`[1, -1]` would flatten `top1/top2/bottom2/bottom1/file.txt` to `top2/bottom2/file.txt`.
+
+Please refer to the [Array.slice documentation](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) for a detailed description.
+
+**!** If you're using both `options.includeParents` combined with `options.subPath`
+please note that `options.includeParents` is applied first.
+
 ## License
 
 MIT
