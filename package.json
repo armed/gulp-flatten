@@ -24,14 +24,15 @@
   },
   "homepage": "https://github.com/armed/gulp-flatten",
   "dependencies": {
-    "gulp-util": "^3.0.1",
+    "gulp-util": "^3.0.7",
     "through2": "^2.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.8.8",
-    "mocha": "^2.2.5",
-    "pre-commit": "^1.0.10",
-    "should": "^7.0.2"
+    "eslint-config-airbnb": "^1.0.2",
+    "gulp": "^3.9.0",
+    "mocha": "^2.3.4",
+    "pre-commit": "^1.1.2",
+    "should": "^7.1.1"
   },
   "engines": {
     "node": ">=0.10"
