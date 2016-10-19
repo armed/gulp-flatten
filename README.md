@@ -101,8 +101,7 @@ will create this structure (from sample directory tree above):
     ├── bootstrap-theme.css
     ├── bootstrap-theme.min.css
     ├── bootstrap.css
-    ├── bootstrap.min.css
-    └── bootstrap.min.js
+    └── bootstrap.min.css
 ```
 
 If passed in as negative number, it will include the number of bottom-level parents in the output. Using this code:
@@ -120,8 +119,7 @@ will create this structure:
     ├── bootstrap-theme.css
     ├── bootstrap-theme.min.css
     ├── bootstrap.css
-    ├── bootstrap.min.css
-    └── bootstrap.min.js
+    └── bootstrap.min.css
 ```
 
 If passes as array of two numbers, both parents from top and bottom will be kept in resulting path of a file.
