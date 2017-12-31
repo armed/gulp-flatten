@@ -46,12 +46,11 @@ describe('gulp-flatten', function () {
     });
 
     it('should emit arg error with nonstring option', function (done) {
-      var stream = flatten(123);
+      var stream = flatten({newPath: 123});
       stream.on('error', function (err) {
         should.exist(err);
         should.exist(err.message);
-        should.ok(err.message === 'Path must be a string. Received undefined'
-          || err.message === 'Arguments to path.join must be strings')
+        should.ok(err.message === 'The "path" argument must be of type string')
         done();
       });
       stream.write(fileInstance);
