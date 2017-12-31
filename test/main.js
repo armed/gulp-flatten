@@ -1,6 +1,6 @@
 var should = require('should');
 var flatten = require('../');
-var File = require('gulp-util').File;
+var Vinyl = require('vinyl');
 var gulp = require('gulp');
 var path = require('path');
 var fileInstance;
@@ -8,7 +8,7 @@ var fileInstance;
 describe('gulp-flatten', function () {
 
   beforeEach(function () {
-    fileInstance = new File({
+    fileInstance = new Vinyl({
       cwd: '/some/project/',
       base: '/some/project/src/',
       path: '/some/project/src/assets/css/app.css',
